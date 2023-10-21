@@ -1,9 +1,16 @@
+import { Outlet } from "react-router-dom";
+import NavOne from "../components/Header/NavOne";
+import NavTwo from "../components/Header/NavTwo";
 
 
 const MainLayout = () => {
     return (
         <div>
-            hello
+            <div className="w-full">
+            <NavOne></NavOne>
+            <NavTwo></NavTwo>
+            </div>
+            <Outlet></Outlet>
         </div>
     );
 };
