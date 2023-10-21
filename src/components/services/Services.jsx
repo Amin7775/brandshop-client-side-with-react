@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 const Services = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center gap-2">
