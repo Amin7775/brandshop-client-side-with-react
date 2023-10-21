@@ -8,13 +8,13 @@ const NavTwo = () => {
             <NavLink to={"/"} className="hover:text-white">Home</NavLink>
           </li>
           <li className=" hover:bg-blue-500   rounded-md mx-1">
-            <NavLink to={"/aboutUs"} className="hover:text-white">Add Products</NavLink>
+            <NavLink to={"/addProducts"} className="hover:text-white">Add Products</NavLink>
           </li>
           <li className=" hover:bg-blue-500 rounded-md mx-1">
-            <NavLink to={"/login"} className="hover:text-white">My Cart</NavLink>
+            <NavLink to={"/myCart"} className="hover:text-white">My Cart</NavLink>
           </li>
           <li className=" hover:bg-blue-500 rounded-md mx-1">
-            <NavLink to={"/register"} className="hover:text-white">Login</NavLink>
+            <NavLink to={"/login"} className="hover:text-white">Login</NavLink>
           </li>
          
         </>
