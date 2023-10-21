@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { SlCalender} from "react-icons/sl";
 import { BiComment} from "react-icons/bi";
 
