@@ -12,7 +12,7 @@ const Products = () => {
         setProducts(filter)
     },[])
     
-    console.log(products)
+    // console.log(products)
     return (
         <div className="bg-[#f1f3f6]">
             products of : {brandName}

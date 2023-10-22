@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 
 
 const ProductCard = ({product}) => {
-    const {image, name, brand, type, price, short_description, rating} = product;
+    const {_id,image, name, brand, type, price, short_description, rating} = product;
 
     
   return (
@@ -26,8 +27,10 @@ const ProductCard = ({product}) => {
           
           {/* <p>{short_description}</p> */}
           <div className="flex gap-2 justify-center flex-col md:flex-row mt-3">
-            <button className="btn bg-blue-600 text-white">View Details</button>
-            <button className="btn bg-blue-600 text-white">Add To Cart</button>
+            <Link to={`/brand/${brand}/${_id}`}>
+            <button className="btn bg-blue-600 hover:bg-blue-500 text-white">View Details</button>
+            </Link>
+            <button className="btn bg-blue-600 hover:bg-blue-500 text-white">Update</button>
             
           </div>
         </div>
