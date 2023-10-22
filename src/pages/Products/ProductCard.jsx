@@ -30,7 +30,11 @@ const ProductCard = ({product}) => {
             <Link to={`/brand/${brand}/${_id}`}>
             <button className="btn bg-blue-600 hover:bg-blue-500 text-white">View Details</button>
             </Link>
+
+            <Link to={`/brand/${brand}/update/${name}/${_id}`}>
             <button className="btn bg-blue-600 hover:bg-blue-500 text-white">Update</button>
+
+            </Link>
             
           </div>
         </div>

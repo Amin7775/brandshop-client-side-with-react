@@ -1,15 +1,26 @@
-const AddProducts = () => {
-  const handleAddProduct = (e) => {
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+
+const UpdateProducts = () => {
+  const loadedProduct = useLoaderData();
+  const { _id, image, name, brand, type, price, short_description, rating } =
+    loadedProduct;
+
+  const [selectedBrand, setSelectedBrand] = useState(brand);
+  const [selectedType, setSelectedType] = useState(type);
+  const [selectedRating, setSelectedRating] = useState(rating);
+
+  const handleUpdateProduct = (e) => {
     e.preventDefault();
     const form = e.target;
 
     const name = form.name.value;
-    const brand = form.brand.value;
+    const brand = selectedBrand;
     const price = form.price.value;
-    const type = form.type.value;
+    const type = selectedType;
     const image = form.image.value;
-    const rating = form.rating.value;
-    const short_description= form.short_description.value;
+    const rating = selectedRating;
+    const short_description = form.short_description.value;
 
     const product = {
       name,
@@ -18,30 +29,30 @@ const AddProducts = () => {
       type,
       image,
       rating,
-      short_description
+      short_description,
     };
     // console.log(product);
 
-    fetch('http://localhost:5000/products',{
-        method:"PUT",
-        headers:{
-            'content-type':'application/json'
-        },
-        body: JSON.stringify((product))
+    fetch(`http://localhost:5000/products/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(product),
     })
-    .then(res=> res.json())
-    .then(data=> {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-    })
+      });
   };
   return (
     <div className="bg-[#f1f3f6]  py-10">
       <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
         <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">
-          Add Products
+          Update Product
         </h2>
 
-        <form onSubmit={handleAddProduct}>
+        <form onSubmit={handleUpdateProduct}>
           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
               <label className="text-gray-700 dark:text-gray-200">
@@ -50,6 +61,7 @@ const AddProducts = () => {
               <input
                 name="name"
                 type="text"
+                defaultValue={name}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -59,6 +71,8 @@ const AddProducts = () => {
 
               <select
                 name="brand"
+                value={selectedBrand}
+                onChange={(e) => setSelectedBrand(e.target.value)}
                 className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               >
                 <option value="A4tech">A4tech</option>
@@ -74,6 +88,7 @@ const AddProducts = () => {
               <label className="text-gray-700 dark:text-gray-200">Price</label>
               <input
                 name="price"
+                defaultValue={price}
                 type="text"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
@@ -86,6 +101,8 @@ const AddProducts = () => {
 
               <select
                 name="type"
+                value={selectedType}
+                onChange={(e) => setSelectedType(e.target.value)}
                 className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               >
                 <option value="Keyboard">Keyboard</option>
@@ -101,6 +118,7 @@ const AddProducts = () => {
               </label>
               <input
                 name="image"
+                defaultValue={image}
                 type="text"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
@@ -112,6 +130,8 @@ const AddProducts = () => {
               </label>
               <select
                 name="rating"
+                value={selectedRating}
+                onChange={(e) => setSelectedRating(e.target.value)}
                 className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               >
                 <option value="0">0</option>
@@ -128,12 +148,11 @@ const AddProducts = () => {
               </label>
               <textarea
                 name="short_description"
+                defaultValue={short_description}
                 rows={5}
                 placeholder="Write Here"
                 className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-              >
-                
-              </textarea>
+              ></textarea>
             </div>
           </div>
 
@@ -142,7 +161,7 @@ const AddProducts = () => {
               className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
               type="submit"
             >
-              Add
+              Update
             </button>
           </div>
         </form>
@@ -151,4 +170,4 @@ const AddProducts = () => {
   );
 };
 
-export default AddProducts;
+export default UpdateProducts;
