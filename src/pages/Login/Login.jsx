@@ -48,7 +48,7 @@ const Login = () => {
                   </span>
                 </p>
                 <p className="text-center">
-                  Don't have an account ?{" "}
+                  Dont have an account ?{" "}
                   <span className="text-blue-600 font-medium">
                     <Link to={"/register"}>Register</Link>
                   </span>
