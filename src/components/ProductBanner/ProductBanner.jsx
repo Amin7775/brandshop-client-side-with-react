@@ -13,12 +13,12 @@ const ProductBanner = ({ products }) => {
     autoplaySpeed: 3500,
     pauseOnHover: true,
     lazyLoad: true,
-    speed: 2500,
+    speed: 1500,
   };
   console.log("From Banner", products);
   //   const {} = products;
   return (
-    <div className=" p-1">
+    <div className=" p-1 mt-8 mb-16">
       <Slider {...settings} className="mx-5 border-2">
         <div className="bg-[#337CCF] h-96 p-1">
           <div className="container mx-auto h-full">

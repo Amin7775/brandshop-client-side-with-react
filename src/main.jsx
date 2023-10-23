@@ -11,6 +11,7 @@ import Register from './pages/Register/Register'
 import Products from './pages/Products/Products'
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 import UpdateProducts from './pages/UpdateProducts/UpdateProducts'
+import AuthProvider from './provider/AuthProvider'
 
 const route = createBrowserRouter([
   {
@@ -62,6 +63,8 @@ const route = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProvider>
     <RouterProvider router={route}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

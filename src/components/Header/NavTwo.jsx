@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { FaAsymmetrik } from "react-icons/fa6";
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from "../../provider/AuthProvider";
 
 const NavTwo = () => {
+  const {user}=useContext(AuthContext)
     const navLinks = (
         <>
           <li className=" hover:bg-blue-500 rounded-md mx-1">
@@ -65,8 +68,14 @@ const NavTwo = () => {
       </div>
       {/* user section */}
       <div className="navbar-end mr-2">
-        
-        guest
+        {
+          user ? <div>
+            {user.displayName}
+          </div>:
+          <div>
+            guest
+          </div>
+        }
       </div>
      
     </div>
