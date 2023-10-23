@@ -23,7 +23,7 @@ const AddProducts = () => {
     // console.log(product);
 
     fetch('http://localhost:5000/products',{
-        method:"PUT",
+        method:"POST",
         headers:{
             'content-type':'application/json'
         },
@@ -33,6 +33,8 @@ const AddProducts = () => {
     .then(data=> {
         console.log(data);
     })
+
+    form.reset();
   };
   return (
     <div className="bg-[#f1f3f6]  py-10">
