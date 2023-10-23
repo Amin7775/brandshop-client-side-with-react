@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
+import ProductBanner from "../../components/ProductBanner/ProductBanner";
 
 const Products = () => {
     const loadedProducts = useLoaderData();
@@ -18,6 +19,7 @@ const Products = () => {
     return (
         <div className="bg-[#f1f3f6] min-h-screen">
             <h1 className="text-center text-4xl font-semibold pt-10">Products of {brandName}</h1>
+            <ProductBanner products={products}></ProductBanner>
             {
                 exist > 0 ? <div className="grid grid-cols-3 container mx-auto gap-14 mt-10 pb-16">
                 {
