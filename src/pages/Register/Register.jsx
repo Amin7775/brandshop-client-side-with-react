@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 
 const Register = () => {
-  const {createUser,updateUser}= useContext(AuthContext)
+  const {createUser,updateUser,googleRegister}= useContext(AuthContext)
 
   const handleRegister = e =>{
     e.preventDefault();
@@ -28,6 +28,13 @@ const Register = () => {
     })
     .catch(error=> {
       console.log(error.message);
+    })
+  }
+
+  const handleGoogleLogin=()=>{
+    googleRegister()
+    .then(()=>{
+      
     })
   }
 
@@ -96,7 +103,13 @@ const Register = () => {
                 <div className="form-control mt-6">
                   <button className="btn btn-primary">Register</button>
                 </div>
-                <p className="text-center">
+                <p className="text-center mt-2">
+                  Register With Google?{" "}
+                  <span onClick={handleGoogleLogin} className="text-blue-600 cursor-pointer font-medium">
+                    Click Here
+                  </span>
+                </p>
+                <p className="text-center mt-2">
                   Already have an account ?{" "}
                   <span className="text-blue-600 font-medium">
                     <Link to={"/login"}>Login</Link>

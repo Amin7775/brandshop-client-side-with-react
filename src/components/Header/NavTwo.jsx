@@ -1,23 +1,37 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaAsymmetrik } from "react-icons/fa6";
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from "../../provider/AuthProvider";
 
 const NavTwo = () => {
-  const {user}=useContext(AuthContext)
+  const {user,photo,logout}=useContext(AuthContext)
+
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    setImage(photo);
+  }, [photo]);
+
+  const handleLogout = () =>{
+    logout()
+    .then(()=>{
+      console.log("logged Out");
+    })
+  }
+
     const navLinks = (
         <>
           <li className=" hover:bg-blue-500 rounded-md mx-1">
-            <NavLink to={"/"} className="hover:text-white">Home</NavLink>
+            <NavLink to={"/"} className="hover:text-white text-base">Home</NavLink>
           </li>
           <li className=" hover:bg-blue-500   rounded-md mx-1">
-            <NavLink to={"/addProducts"} className="hover:text-white">Add Products</NavLink>
+            <NavLink to={"/addProducts"} className="hover:text-white text-base">Add Products</NavLink>
           </li>
           <li className=" hover:bg-blue-500 rounded-md mx-1">
-            <NavLink to={"/myCart"} className="hover:text-white">My Cart</NavLink>
+            <NavLink to={"/myCart"} className="hover:text-white text-base">My Cart</NavLink>
           </li>
           <li className=" hover:bg-blue-500 rounded-md mx-1">
-            <NavLink to={"/login"} className="hover:text-white">Login</NavLink>
+            <NavLink to={"/login"} className="hover:text-white text-base">Login</NavLink>
           </li>
          
         </>
@@ -67,14 +81,56 @@ const NavTwo = () => {
         </ul>
       </div>
       {/* user section */}
-      <div className="navbar-end mr-2">
+      <div className="navbar-end">
         {
-          user ? <div>
-            {user.displayName}
-          </div>:
-          <div>
-            guest
+          user ? <div className="flex items-center gap-3">
+          <p className="hidden md:block font-medium">{user.displayName}</p>
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-28 rounded-full">
+                {image ? <img src={image} /> : <img src={user.photoURL} />}
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className=" z-[1]  shadow menu menu-sm dropdown-content bg-[#0067cd] rounded-box w-52 text-white"
+            >
+              <li className="hover:bg-white rounded-md">
+                <a>{user.displayName}</a>
+              </li>
+              <li className="hover:bg-white rounded-md">
+                <a>{user.email}</a>
+              </li>
+              <li className="hover:bg-white rounded-md">
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            </ul>
           </div>
+            
+        </div>:
+          <div className="flex items-center gap-3">
+          <p className="hidden md:block font-medium">Guest Mode</p>
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-28 rounded-full">
+              <img src="https://i.ibb.co/RjNr5mp/speaker2.jpg" />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className=" z-[1]  shadow menu menu-sm dropdown-content bg-[#0067cd] rounded-box w-52 text-white"
+            >
+              <li className="hover:bg-white rounded-md">
+                <a>Not Logged In</a>
+              </li>
+              
+              <li className="hover:bg-white rounded-md">
+              <Link to={'/login'}><button>Login</button></Link>
+              </li>
+            </ul>
+          </div>
+            
+        </div>
         }
       </div>
      
