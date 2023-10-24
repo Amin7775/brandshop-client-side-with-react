@@ -1,10 +1,31 @@
+import { useContext } from "react";
 import { useLoaderData} from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const ProductDetails = () => {
   const loadedProduct = useLoaderData();
+  const {user}=useContext(AuthContext)
   console.log(loadedProduct);
-  const { image, name, brand, type, price, short_description, rating } =
+  const { _id,image, name, brand, type, price, short_description, rating } =
     loadedProduct;
+
+
+    const handleAddToCart = (product_id) =>{
+      const userEmail = user.email;
+      const cartDataForDB = {
+        product_id,
+        userEmail
+      }
+
+      fetch('http://localhost:5000/cart',{
+        method:"POST",
+        headers:{
+          "content-type":"application/json"
+        },
+        body: JSON.stringify(cartDataForDB)
+      })
+      
+    }
   return (
     <div className="bg-[#f1f3f6] py-10 px-3 md:px-5 lg:px-0">
       <div className=" container mx-auto card lg:card-side bg-base-100 shadow-xl lg:grid lg:grid-cols-2">
@@ -27,7 +48,7 @@ const ProductDetails = () => {
           </div>
           </div>
           <div className="card-actions justify-end">
-            <button className="btn bg-blue-600 text-white">Add To Cart</button>
+            <button onClick={()=>handleAddToCart(_id)} className="btn bg-blue-600 text-white">Add To Cart</button>
           </div>
         </div>
       </div>
