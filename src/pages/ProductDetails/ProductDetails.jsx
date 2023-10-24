@@ -13,7 +13,7 @@ const ProductDetails = () => {
     const handleAddToCart = () =>{
       const userEmail = user.email;
       const cartDataForDB = {
-        loadedProduct,
+        product_id:_id,image, name, brand, type, price, short_description, rating,
         userEmail
       }
 

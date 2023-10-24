@@ -1,8 +1,24 @@
-const CartListProduct = ({ product }) => {
-  const { loadedProduct } = product;
-  const { _id, image, name, brand, type, price, short_description, rating } =
+const CartListProduct = ({ product,setCartProducts,cartProducts }) => {
+  const { _id, loadedProduct } = product;
+  const {  image, name, brand, type, price, short_description, rating } =
     loadedProduct;
 
+  
+    const handleDelete= (_id)=>{
+        const cartListId= _id;
+
+        fetch(`http://localhost:5000/cart/${cartListId}`,{
+            method:"DELETE"
+        })
+        .then(res=> res.json)
+        .then(data => {
+            console.log(data)
+            if(data.deletedCount > 0){
+                const remaining = cartProducts.filter(cartProduct => cartProduct._id !== _id)
+                setCartProducts(remaining)
+            }
+        })
+    }
     
   return (
     <div className="border-t-4 border-slate-200 border- flex justify-between items-center">
@@ -18,7 +34,7 @@ const CartListProduct = ({ product }) => {
       </div>
       <div className="flex flex-col h-full justify-between items-end">
         <p className="font-medium ">{price} TK</p>
-        <button  className="font-medium text-purple-600">Delete</button >
+        <button onClick={()=>handleDelete(_id)} className="font-medium text-purple-600">Delete</button >
       </div>
     </div>
   );
