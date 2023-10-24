@@ -6,6 +6,8 @@ const MyCart = () => {
   const { user } = useContext(AuthContext);
   const loadedCart = useLoaderData();
   const [cartProducts, setCartProducts] = useState(loadedCart);
+//   const filter = cartProducts.filter(product=> product.userEmail == user.email)
+//   console.log(filter)
   
   const handleDelete = (_id) => {
     console.log(_id)
