@@ -5,15 +5,15 @@ import { AuthContext } from "../../provider/AuthProvider";
 const ProductDetails = () => {
   const loadedProduct = useLoaderData();
   const {user}=useContext(AuthContext)
-  console.log(loadedProduct);
+  // console.log(loadedProduct);
   const { _id,image, name, brand, type, price, short_description, rating } =
     loadedProduct;
 
 
-    const handleAddToCart = (product_id) =>{
+    const handleAddToCart = () =>{
       const userEmail = user.email;
       const cartDataForDB = {
-        product_id,
+        loadedProduct,
         userEmail
       }
 
@@ -24,7 +24,11 @@ const ProductDetails = () => {
         },
         body: JSON.stringify(cartDataForDB)
       })
-      
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
+
     }
   return (
     <div className="bg-[#f1f3f6] py-10 px-3 md:px-5 lg:px-0">
@@ -48,7 +52,7 @@ const ProductDetails = () => {
           </div>
           </div>
           <div className="card-actions justify-end">
-            <button onClick={()=>handleAddToCart(_id)} className="btn bg-blue-600 text-white">Add To Cart</button>
+            <button onClick={()=>handleAddToCart()} className="btn bg-blue-600 text-white">Add To Cart</button>
           </div>
         </div>
       </div>
