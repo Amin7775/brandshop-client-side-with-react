@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Brands = ({ brand }) => {
   const { brand_name, brand_image } = brand;
   return (
-    <div className="p-1">
-      <div className="card w-[390px] mx-auto bg-base-100 shadow-xl ">
+    <div className="">
+      <div className="card w-80 mx-auto bg-base-100 shadow-xl ">
         <Link to={`/brand/${brand_name}`}>
         <figure className="p-5">
           <img

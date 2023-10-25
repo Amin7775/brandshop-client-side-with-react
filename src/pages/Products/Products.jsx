@@ -21,7 +21,7 @@ const Products = () => {
             <h1 className="text-center text-4xl font-semibold pt-10">Products of {brandName}</h1>
             {exist > 0 ? <ProductBanner products={products}></ProductBanner>:<></>}
             {
-                exist > 0 ? <div className="grid grid-cols-3 container mx-auto gap-14 mt-10 pb-16">
+                exist > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 container mx-auto gap-10 md:gap-5 mt-0 md:mt-10 p-10 pt-0 md:p-5 lg:p-0 md:pb-16 ">
                 {
                     products.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
                 }

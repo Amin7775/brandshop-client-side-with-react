@@ -39,7 +39,7 @@ const NavTwo = () => {
     return (
         <div className="bg-white">
             <div className="navbar container mx-auto  py-4 px-0">
-      <div className="navbar-start ">
+      <div className="navbar-start lg:ml-1">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -59,7 +59,7 @@ const NavTwo = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52 text-lg font-medium bg-black "
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52 text-lg font-medium bg-[#0067cd] text-white "
             id="sidebar"
           >
             {navLinks}
@@ -81,7 +81,7 @@ const NavTwo = () => {
         </ul>
       </div>
       {/* user section */}
-      <div className="navbar-end">
+      <div className="navbar-end mr-3 lg:mr-2">
         {
           user ? <div className="flex items-center gap-3">
           <p className="hidden md:block font-medium">{user.displayName}</p>

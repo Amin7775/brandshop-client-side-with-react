@@ -27,26 +27,26 @@ const MyCart = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f1f3f6]">
+    <div className="min-h-screen bg-[#f1f3f6] px-5 md:px-4">
       <h1 className="text-4xl font-medium text-center py-8">Cart List</h1>
       {/* <p className="text-center">User: {user.displayName} <span>({user.email})</span></p> */}
-      <div className="w-1/2 border-4 border-x-0 border-t-0 border-slate-200 mx-auto mt-2 mb-5 h-full">
+      <div className="w-full lg:w-1/2 border-4 border-x-0 border-t-0 border-slate-200 mx-auto mt-2 mb-5 h-full">
         {cartProducts.map((product) => (
           <div
             key={product._id}
-            className="border-t-4 border-slate-200 border- flex justify-between items-center"
+            className="border-t-4 border-slate-200 w-full"
           >
-            <div className="flex gap-3 items-center w-11/12">
-              <div className="p-5 w-48  bg-blue-200">
-                <img className="my-auto border-5" src={product.image} alt="" />
+            <div className="grid grid-cols-6 gap-0  w-full">
+              <div className="p-5 bg-blue-200 w-full col-span-2 md:col-span-1  flex justify-center items-center">
+                <img className="my-auto w-40" src={product.image} alt="" />
               </div>
-              <div>
-                <p className="text-lg font-medium">Name: {product.name}</p>
-                <p className="font-medium">Brand: {product.brand}</p>
-                <p className="font-medium">Type: {product.type}</p>
+              <div className="border-blue-400 border-5 col-span-3 md:col-span-4 pl-5 flex flex-col justify-center py-2">
+                <p className="text-base md:text-lg md:font-medium "><span className="font-medium">Name:</span> {product.name}</p>
+                <p className=" md:font-medium"><span className="font-medium">Brand:</span> {product.brand}</p>
+                <p className=" md:font-medium"><span className="font-medium">Type:</span> {product.type}</p>
               </div>
-            </div>
-            <div className="flex flex-col h-full justify-between items-end">
+              
+            <div className="flex flex-col h-full justify-center items-end">
               <p className="font-medium ">{product.price} TK</p>
               <button
                 onClick={() => handleDelete(product._id)}
@@ -54,6 +54,7 @@ const MyCart = () => {
               >
                 Delete
               </button>
+            </div>
             </div>
           </div>
         ))}

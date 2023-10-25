@@ -37,7 +37,7 @@ const AddProducts = () => {
     form.reset();
   };
   return (
-    <div className="bg-[#f1f3f6]  py-10">
+    <div className="bg-[#f1f3f6]  py-10 px-5">
       <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
         <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">
           Add Products

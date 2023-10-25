@@ -31,9 +31,9 @@ const ProductDetails = () => {
 
     }
   return (
-    <div className="bg-[#f1f3f6] py-10 px-3 md:px-5 lg:px-0">
+    <div className="bg-[#f1f3f6] py-10 px-5">
       <div className=" container mx-auto card lg:card-side bg-base-100 shadow-xl lg:grid lg:grid-cols-2">
-        <figure className="bg-blue-200 p-5 max-h-[600px]">
+        <figure className="bg-blue-200 p-5 lg:p-10 max-h-[600px]">
           <img src={image} alt="Album" />
         </figure>
         <div className="card-body">

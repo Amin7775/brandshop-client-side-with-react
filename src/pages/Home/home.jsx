@@ -14,8 +14,9 @@ const Home = () => {
             <Banner></Banner>
             <MarqueeDetails></MarqueeDetails>
             <div className="container mx-auto pb-5">
-                <h1 className="mt-0 text-center text-4xl font-medium mb-10">Brands : {brandLoader.length}</h1>
-                <div className="grid grid-cols-3 gap-10 p-1">
+                <h1 className="mt-0 text-center text-4xl font-medium mb-1 md:mb-10">Brands</h1>
+                {/* grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-16 p-5 pb-0 pt-0 md:p-1 container mx-auto  */}
+                <div className="flex flex-wrap mx-auto gap-10 justify-center pt-10 md:pt-0">
                     {
                         brandLoader.map(brand=> <Brands key={brand._id} brand={brand}></Brands>)
                     }
@@ -30,7 +31,7 @@ const Home = () => {
 
             <div className="  mt-10  pb-10">
                 <h1 className="pb-5 text-center text-4xl font-medium">Blogs</h1>
-                <div className="container mx-auto mt-3">
+                <div className="container mx-auto mt-3 md:px-5">
                     <Blogs></Blogs>
                 </div>
             </div>

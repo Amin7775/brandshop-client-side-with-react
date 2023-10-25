@@ -39,9 +39,9 @@ const Register = () => {
   }
 
     return (
-        <div className="h-[80vh] bg-[#f1f3f6]">
-      <div className="flex flex-col justify-center items-center h-full">
-        <div className="hero bg-base-200">
+        <div className="min-h-screen bg-[#f1f3f6]">
+      <div className="flex flex-col justify-center items-center h-full  ">
+        <div className="hero bg-base-200 mt-16">
           <div className="hero-content flex-col w-full md:w-[80vw] lg:w-[40vw]">
             <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
               <h1 className=" text-2xl md:text-3xl lg:text-4xl font-bold text-center mt-6 mb-4 md:px-5 lg:px-0">

@@ -6,7 +6,7 @@ const ProductCard = ({product}) => {
 
     
   return (
-    <div className="p-1">
+    <div className="p-1 md:pb-10">
       <div className="card bg-base-100 shadow-xl h-[575px] ">
         <figure className="border-2 bg-blue-100 h-[280px] p-2">
           <img
@@ -28,7 +28,7 @@ const ProductCard = ({product}) => {
           </div>
           
           {/* <p>{short_description}</p> */}
-          <div className="flex gap-2 justify-center flex-col md:flex-row mt-3 ">
+          <div className="flex gap-2 justify-center mt-3 ">
             <Link to={`/brand/${brand}/${_id}`}>
             <button className="btn bg-blue-600 hover:bg-blue-500 text-white">View Details</button>
             </Link>
