@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddProducts = () => {
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -32,6 +34,12 @@ const AddProducts = () => {
     .then(res=> res.json())
     .then(data=> {
         console.log(data);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'New Product Added!',
+          showConfirmButton: true,
+        })
     })
 
     form.reset();
@@ -50,6 +58,7 @@ const AddProducts = () => {
                 Product Name
               </label>
               <input
+              required
                 name="name"
                 type="text"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
@@ -61,6 +70,7 @@ const AddProducts = () => {
 
               <select
                 name="brand"
+                
                 className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               >
                 <option value="A4tech">A4tech</option>
@@ -77,6 +87,7 @@ const AddProducts = () => {
               <input
                 name="price"
                 type="text"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -104,6 +115,7 @@ const AddProducts = () => {
               <input
                 name="image"
                 type="text"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -130,6 +142,7 @@ const AddProducts = () => {
               </label>
               <textarea
                 name="short_description"
+                required
                 rows={5}
                 placeholder="Write Here"
                 className="block w-full px-2 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
@@ -141,7 +154,7 @@ const AddProducts = () => {
 
           <div className="flex justify-end mt-6">
             <button
-              className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+              className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-gray-600"
               type="submit"
             >
               Add

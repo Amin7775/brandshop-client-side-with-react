@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData} from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const ProductDetails = () => {
   const loadedProduct = useLoaderData();
@@ -27,6 +28,12 @@ const ProductDetails = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${name} ${type} has been added to your cart`,
+          showConfirmButton: true,
+        })
       })
 
     }
@@ -52,7 +59,7 @@ const ProductDetails = () => {
           </div>
           </div>
           <div className="card-actions justify-end">
-            <button onClick={()=>handleAddToCart()} className="btn bg-blue-600 text-white">Add To Cart</button>
+            <button onClick={()=>handleAddToCart()} className="btn bg-blue-600 hover:bg-blue-500 text-white">Add To Cart</button>
           </div>
         </div>
       </div>

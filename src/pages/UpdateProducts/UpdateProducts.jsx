@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateProducts = () => {
   const loadedProduct = useLoaderData();
@@ -43,6 +44,12 @@ const UpdateProducts = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Product Details Updated!',
+          showConfirmButton: true,
+        })
       });
   };
   return (
@@ -158,7 +165,7 @@ const UpdateProducts = () => {
 
           <div className="flex justify-end mt-6">
             <button
-              className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+              className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-gray-600"
               type="submit"
             >
               Update

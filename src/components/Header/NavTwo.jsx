@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { FaAsymmetrik } from "react-icons/fa6";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const NavTwo = () => {
   const {user,photo,logout}=useContext(AuthContext)
+  const navigate = useNavigate()
 
   const [image, setImage] = useState(null);
 
@@ -16,6 +18,18 @@ const NavTwo = () => {
     logout()
     .then(()=>{
       console.log("logged Out");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Logged Out!',
+        showConfirmButton: true,
+      })
+      .then(res=> 
+        {
+          if(res.isConfirmed == true){
+            navigate('/')
+          }
+        })
     })
   }
 

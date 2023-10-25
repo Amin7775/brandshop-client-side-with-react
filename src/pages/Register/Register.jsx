@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext } from "react";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
   const {createUser,updateUser,googleRegister}= useContext(AuthContext)
-
+  const navigate = useNavigate()
   const handleRegister = e =>{
     e.preventDefault();
     const form = e.target;
@@ -18,14 +19,32 @@ const Register = () => {
 
     if(password.length<6){
       console.log("less than 6")
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Your Password Must Have At Least 6 Characters!',
+        showConfirmButton: true,
+      })
       return
     }
     if(!/[A-Z]/.test(password)){
-      console.log("capitl")
+      console.log("capital")
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Your Password Must Have At Least 1 Capital Letter!',
+        showConfirmButton: true,
+      })
       return
     }
     if(!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\]/.test(password)){
-      console.log("NOT SP");
+      console.log("NOT Special");
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Your Password Must Have At Least 1 Special Character!',
+        showConfirmButton: true,
+      })
       return
     }
 
@@ -33,7 +52,18 @@ const Register = () => {
     .then(()=>{
       updateUser(name,photoUrl)
       .then(()=>{
-        console.log("success");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registration Success!',
+          showConfirmButton: true,
+        })
+        .then(res=> 
+          {
+            if(res.isConfirmed == true){
+              navigate('/')
+            }
+          })
       })
       .catch(error=>{
         console.log(error.message)
@@ -114,7 +144,7 @@ const Register = () => {
                   />
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Register</button>
+                  <button className="btn bg-blue-600 hover:bg-blue-500 text-white">Register</button>
                 </div>
                 <p className="text-center mt-2">
                   Register With Google?{" "}
