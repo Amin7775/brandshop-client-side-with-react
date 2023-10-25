@@ -16,6 +16,19 @@ const Register = () => {
 
     console.log(name,photoUrl,email,password)
 
+    if(password.length<6){
+      console.log("less than 6")
+      return
+    }
+    if(!/[A-Z]/.test(password)){
+      console.log("capitl")
+      return
+    }
+    if(!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\]/.test(password)){
+      console.log("NOT SP");
+      return
+    }
+
     createUser(email,password)
     .then(()=>{
       updateUser(name,photoUrl)
