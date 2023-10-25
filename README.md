@@ -1,4 +1,4 @@
-# Footevents #
+# AlTech #
 
 ## Project Link : [https://brand-shop-74072.web.app/] ##
 
