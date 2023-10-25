@@ -7,7 +7,7 @@ const CartListProduct = ({ product,setCartProducts,cartProducts }) => {
     const handleDelete= (_id)=>{
         const cartListId= _id;
 
-        fetch(`http://localhost:5000/cart/${cartListId}`,{
+        fetch(`https://b8a10-brandshop-server-side-amin7775-o7m8p11w0.vercel.app/cart/${cartListId}`,{
             method:"DELETE"
         })
         .then(res=> res.json)

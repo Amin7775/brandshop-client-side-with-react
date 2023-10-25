@@ -34,7 +34,7 @@ const UpdateProducts = () => {
     };
     // console.log(product);
 
-    fetch(`http://localhost:5000/products/${_id}`, {
+    fetch(`https://b8a10-brandshop-server-side-amin7775-o7m8p11w0.vercel.app/products/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

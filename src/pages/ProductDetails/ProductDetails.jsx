@@ -18,7 +18,7 @@ const ProductDetails = () => {
         userEmail
       }
 
-      fetch('http://localhost:5000/cart',{
+      fetch('https://b8a10-brandshop-server-side-amin7775-o7m8p11w0.vercel.app/cart',{
         method:"POST",
         headers:{
           "content-type":"application/json"
