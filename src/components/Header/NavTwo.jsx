@@ -55,7 +55,7 @@ const NavTwo = () => {
             <div className="navbar container mx-auto  py-4 px-0">
       <div className="navbar-start lg:ml-1">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-ghost dark:text-white lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
